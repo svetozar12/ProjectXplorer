@@ -8,7 +8,6 @@ export async function authGuard({ url, cookies }: ServerLoadEvent) {
 	const { pathname } = url;
 	try {
 		const token = cookies.get(FIREBASE_TOKEN) || '';
-		console.log(token);
 		const decodedToken = await firebaseServerInstance.auth().verifyIdToken(token);
 		if (!decodedToken && !pathname.includes('/login')) redirect(303, '/login');
 	} catch (error) {

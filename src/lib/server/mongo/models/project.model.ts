@@ -1,5 +1,5 @@
 import type { User } from 'firebase/auth';
-import { Schema, Document, model, Types } from 'mongoose';
+import mongoose, { Schema, Document, model, Types } from 'mongoose';
 
 interface Task {
 	title: string;
@@ -34,7 +34,8 @@ interface Project extends Document {
 const projectSchema: Schema<Project> = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	description: String,
 	startDate: {
@@ -50,10 +51,11 @@ const projectSchema: Schema<Project> = new Schema({
 			},
 			description: String,
 			dueDate: Date,
-			assignedTo: {
-				type: Schema.Types.ObjectId,
-				ref: 'User'
-			},
+			// TODO: add with user resource
+			// assignedTo: {
+			// 	type: Schema.Types.ObjectId,
+			// 	ref: 'User'
+			// },
 			status: {
 				type: String,
 				enum: ['To Do', 'In Progress', 'Completed'],
@@ -61,27 +63,29 @@ const projectSchema: Schema<Project> = new Schema({
 			}
 		}
 	],
-	members: [
-		{
-			user: {
-				type: Schema.Types.ObjectId,
-				ref: 'User'
-			},
-			role: {
-				type: String,
-				enum: ['Admin', 'Member'],
-				default: 'Member'
-			}
-		}
-	],
+	// TODO: add with user resource
+	// members: [
+	// 	{
+	// 		user: {
+	// 			type: Schema.Types.ObjectId,
+	// 			ref: 'User'
+	// 		},
+	// 		role: {
+	// 			type: String,
+	// 			enum: ['Admin', 'Member'],
+	// 			default: 'Member'
+	// 		}
+	// 	}
+	// ],
 	files: [
 		{
 			name: String,
 			path: String,
-			uploadedBy: {
-				type: Schema.Types.ObjectId,
-				ref: 'User'
-			},
+			// TODO: add with user resource
+			// uploadedBy: {
+			// 	type: Schema.Types.ObjectId,
+			// 	ref: 'User'
+			// },
 			uploadDate: {
 				type: Date,
 				default: Date.now
@@ -90,4 +94,4 @@ const projectSchema: Schema<Project> = new Schema({
 	]
 });
 
-export const ProjectModel = model<Project>('Project', projectSchema);
+export const ProjectModel = mongoose.models.Project || model<Project>('Project', projectSchema);
