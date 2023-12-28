@@ -1,4 +1,10 @@
+import {
+	ProjectAlreadyExist,
+	ProjectCreated,
+	ProjectCreateInternalError
+} from '$lib/constants/project';
 import { ProjectModel } from '$lib/server/mongo';
+import { createResponse } from '$lib/server/response';
 import type { RequestEvent } from './$types';
 
 export async function GET() {
@@ -9,11 +15,11 @@ export async function POST({ request }: RequestEvent) {
 	try {
 		const data = await request.json();
 		const exist = await ProjectModel.findOne({ name: data.name });
-		if (exist) return new Response('Already exists', { status: 409 });
+		if (exist) return createResponse(ProjectAlreadyExist);
 		const project = await ProjectModel.create(data);
 		await project.save();
-		return new Response('Project successfully created.');
+		return createResponse(ProjectCreated);
 	} catch (error) {
-		return new Response('Internal server error');
+		return createResponse(ProjectCreateInternalError);
 	}
 }
