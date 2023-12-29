@@ -3,14 +3,15 @@ import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '../$types';
 import { PROJECT_MESSAGES } from '$lib/constants/project';
 import { HttpStatus } from '$lib/server/httpStatuses';
+import { deleteProjectSchema, getProjectByIdSchema, updateProjectSchema } from './schema';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RequestEventType = RequestEvent & { params: any };
 
 export async function GET({ params }: RequestEventType) {
 	try {
-		const projectId = params.id;
-		const project = await ProjectModel.findById(projectId).lean().exec();
+		const { id } = getProjectByIdSchema.parse(params);
+		const project = await ProjectModel.findById(id).lean().exec();
 		if (!project) return json(PROJECT_MESSAGES.PROJECT_NOT_FOUND, { status: HttpStatus.NOT_FOUND });
 		return json(project, { status: HttpStatus.OK });
 	} catch (error) {
@@ -22,9 +23,9 @@ export async function GET({ params }: RequestEventType) {
 
 export async function PUT({ params, request }: RequestEventType) {
 	try {
-		const projectId = params.id;
 		const data = await request.json();
-		const project = await ProjectModel.findByIdAndUpdate(projectId, { data }).lean().exec();
+		const { id, payload } = updateProjectSchema.parse({ ...params, payload: data });
+		const project = await ProjectModel.findByIdAndUpdate(id, { payload }).lean().exec();
 		if (!project) return json(PROJECT_MESSAGES.PROJECT_NOT_FOUND, { status: HttpStatus.NOT_FOUND });
 
 		return json(project, { status: HttpStatus.CREATED });
@@ -37,8 +38,8 @@ export async function PUT({ params, request }: RequestEventType) {
 
 export async function DELETE({ params }: RequestEventType) {
 	try {
-		const projectId = params.id;
-		const project = await ProjectModel.findByIdAndDelete(projectId).exec();
+		const { id } = deleteProjectSchema.parse(params);
+		const project = await ProjectModel.findByIdAndDelete(id).exec();
 		if (!project) return json(PROJECT_MESSAGES.PROJECT_NOT_FOUND, { status: HttpStatus.NOT_FOUND });
 		return json(PROJECT_MESSAGES.PROJECT_DELETED, { status: HttpStatus.OK });
 	} catch (error) {

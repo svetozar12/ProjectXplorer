@@ -16,7 +16,7 @@ export async function GET({ url: { searchParams } }: RequestEvent) {
 	const total = await ProjectModel.find().countDocuments().lean().exec();
 	const pagination = { page, limit, total, prev: page > 1, next: page * limit < total };
 	const data = { data: projects, pagination };
-	return json(data);
+	return json(data, { status: HttpStatus.OK });
 }
 
 export async function POST({ request }: RequestEvent) {
