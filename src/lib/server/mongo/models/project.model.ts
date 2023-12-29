@@ -1,5 +1,5 @@
 import type { User } from 'firebase/auth';
-import mongoose, { Schema, Document, model, Types } from 'mongoose';
+import mongoose, { Schema, Document, model, Types, Model } from 'mongoose';
 
 interface Task {
 	title: string;
@@ -93,5 +93,5 @@ const projectSchema: Schema<Project> = new Schema({
 		}
 	]
 });
-
-export const ProjectModel = mongoose.models.Project || model<Project>('Project', projectSchema);
+export const ProjectModel =
+	(mongoose.models.Project as Model<Project>) || model<Project>('Project', projectSchema);
