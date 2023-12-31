@@ -8,10 +8,10 @@ const config: PlaywrightTestConfig = {
 			NODE_ENV: 'test'
 		}
 	},
-	testDir: 'e2e',
+	testDir: 'tests',
 	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
-	globalSetup: './e2e/global.setup.ts',
-	globalTeardown: './e2e/global.teardown.ts'
+	globalSetup: './tests/global.setup.ts',
+	globalTeardown: './tests/global.teardown.ts'
 };
 
 export default config;
