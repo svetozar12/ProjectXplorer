@@ -9,9 +9,10 @@ dbConnect().then(async () => {
 });
 
 // Define sample data
-const projectsData: Project[] = [
-	{
-		name: 'Project One',
+const projectsData: Project[] = [];
+for (let index = 0; index < 15; index++) {
+	projectsData.push({
+		name: `Project ${index}`,
 		description: 'Description for Project One',
 		startDate: new Date('2023-01-01'),
 		endDate: new Date('2023-02-01'),
@@ -37,8 +38,8 @@ const projectsData: Project[] = [
 				uploadDate: new Date()
 			}
 		]
-	}
-];
+	});
+}
 
 // Function to seed the database
 const seedDatabase = async () => {

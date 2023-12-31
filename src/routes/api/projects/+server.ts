@@ -6,7 +6,11 @@ import { HttpStatus } from '$lib/server/httpStatuses';
 import { createProjectSchema, getProjectListSchema } from './schema';
 
 export async function GET({ url: { searchParams } }: RequestEvent) {
-	const { page, limit } = getProjectListSchema.parse(searchParams);
+	const { page, limit } = getProjectListSchema.parse({
+		page: Number(searchParams.get('page')),
+		limit: Number(searchParams.get('limit'))
+	});
+	console.log(page, limit, searchParams);
 	const projects = await ProjectModel.find()
 		.skip((page - 1) * limit)
 		.limit(limit)
