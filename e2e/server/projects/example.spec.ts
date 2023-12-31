@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test('API endpoint returns expected data', async ({ page }) => {
+// happy paths
+test('test /api/projects', async ({ page }) => {
 	// Navigate to the API endpoint
 	await page.goto('/api/projects');
 
@@ -11,7 +12,6 @@ test('API endpoint returns expected data', async ({ page }) => {
 
 	// Perform assertions based on your API response
 	expect(response).not.toBeNull();
-	console.log(response);
 	// expect(response.status).toEqual('success');
 	// expect(response.data).toHaveProperty('exampleProperty', 'expectedValue');
 });

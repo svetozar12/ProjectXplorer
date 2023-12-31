@@ -21,7 +21,7 @@ interface File {
 	uploadDate?: Date;
 }
 
-interface Project extends Document {
+export interface Project {
 	name: string;
 	description?: string;
 	startDate?: Date;
@@ -31,7 +31,9 @@ interface Project extends Document {
 	files?: File[];
 }
 
-const projectSchema: Schema<Project> = new Schema({
+export interface ProjectDocument extends Project, Document {}
+
+const projectSchema: Schema<ProjectDocument> = new Schema({
 	name: {
 		type: String,
 		required: true,
@@ -94,4 +96,5 @@ const projectSchema: Schema<Project> = new Schema({
 	]
 });
 export const ProjectModel =
-	(mongoose.models.Project as Model<Project>) || model<Project>('Project', projectSchema);
+	(mongoose.models.Project as Model<ProjectDocument>) ||
+	model<ProjectDocument>('Project', projectSchema);

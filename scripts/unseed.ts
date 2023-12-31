@@ -1,0 +1,23 @@
+import 'dotenv/config';
+import { dbConnect, dbDisconnect, getDB } from './util';
+
+// Connect to the MongoDB instance
+dbConnect().then(async () => {
+	// Run the script to clear the database
+	await clearDatabase();
+});
+
+// Function to clear the database
+const clearDatabase = async () => {
+	try {
+		// Delete all documents in the ProjectModel collection
+		const db = getDB();
+		await db.dropDatabase();
+		console.log('Database cleared successfully for ' + process.env.NODE_ENV);
+	} catch (error) {
+		console.error('Error clearing the database:', error);
+	} finally {
+		// Disconnect from MongoDB
+		await dbDisconnect();
+	}
+};

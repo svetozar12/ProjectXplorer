@@ -9,7 +9,9 @@ const config: PlaywrightTestConfig = {
 		}
 	},
 	testDir: 'e2e',
-	testMatch: /(.+\.)?(test|spec)\.[jt]s/
+	testMatch: /(.+\.)?(test|spec)\.[jt]s/,
+	globalSetup: './e2e/global.setup.ts',
+	globalTeardown: './e2e/global.teardown.ts'
 };
 
 export default config;
