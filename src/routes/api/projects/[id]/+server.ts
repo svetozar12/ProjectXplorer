@@ -4,6 +4,7 @@ import type { RequestEvent } from '../$types';
 import { PROJECT_MESSAGES } from '$lib/constants/project';
 import { HttpStatus } from '$lib/server/httpStatuses';
 import { deleteProjectSchema, getProjectByIdSchema, updateProjectSchema } from './schema';
+import { ZodError } from 'zod';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type RequestEventType = RequestEvent & { params: any };
@@ -25,11 +26,26 @@ export async function PUT({ params, request }: RequestEventType) {
 	try {
 		const data = await request.json();
 		const { id, payload } = updateProjectSchema.parse({ ...params, payload: data });
-		const project = await ProjectModel.findByIdAndUpdate(id, { payload }).lean().exec();
-		if (!project) return json(PROJECT_MESSAGES.PROJECT_NOT_FOUND, { status: HttpStatus.NOT_FOUND });
+		const project = await ProjectModel.findByIdAndUpdate(id, { ...payload }, { new: true })
+			.lean()
+			.exec();
 
-		return json(project, { status: HttpStatus.CREATED });
+		if (!project) {
+			return json(PROJECT_MESSAGES.PROJECT_NOT_FOUND, { status: HttpStatus.NOT_FOUND });
+		}
+
+		// Return the updated project with status 200 OK
+		return json(project, { status: HttpStatus.OK });
 	} catch (error) {
+		if (error instanceof ZodError) {
+			// Handle Zod validation errors
+			return json(
+				{ error: 'Invalid input', details: error.errors },
+				{
+					status: HttpStatus.BAD_REQUEST
+				}
+			);
+		}
 		return json(PROJECT_MESSAGES.PROJECT_UPDATE_INTERNAL_ERROR, {
 			status: HttpStatus.INTERNAL_SERVER_ERROR
 		});

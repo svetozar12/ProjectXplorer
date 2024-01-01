@@ -1,9 +1,8 @@
 import 'dotenv/config';
 import { dbConnect, dbDisconnect, getDB } from './util';
-
+console.log('hi');
 // Connect to the MongoDB instance
 dbConnect().then(async () => {
-	// Run the script to clear the database
 	await clearDatabase();
 });
 
