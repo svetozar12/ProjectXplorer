@@ -1,5 +1,4 @@
 export const PROJECT_MESSAGES = {
-	PROJECT_CREATED: 'Project successfully created.',
 	PROJECT_DELETED: 'Project successfully deleted.',
 	PROJECT_ALREADY_EXIST: 'Project already exists.',
 	PROJECT_NOT_FOUND: 'Project not found.',
