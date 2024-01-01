@@ -1,39 +1,30 @@
+import mongoose from 'mongoose';
+import type { ProjectDocument } from '../../../src/lib/server/mongo';
 import { test, expect, type Response } from '@playwright/test';
+import { PROJECT_MESSAGES } from '../../../src/lib/constants/project';
+test.describe('Testing GET - /api/projects/{id}', () => {
+	let project: ProjectDocument;
 
-test('GET - get all projects /api/projects', async ({ page }) => {
-	// Navigate to the API endpoint
-	const response = (await page.goto('/api/projects')) as Response;
-	const responseBody = await response.json();
-
-	expect(response.ok()).toBeTruthy();
-	expect(responseBody.data.length).toEqual(10);
-	expect(responseBody.pagination).toEqual({
-		page: 1,
-		limit: 10,
-		total: 15,
-		prev: false,
-		next: true
+	test.beforeEach(async ({ page }) => {
+		// Navigate to the projects list endpoint
+		const response = (await page.goto('/api/projects')) as Response;
+		const responseBody = await response.json();
+		project = responseBody.data[0];
 	});
-});
 
-test('GET - get all project with different pagination /api/projects', async ({ page }) => {
-	const pagination = {
-		page: 3,
-		limit: 2
-	};
-	// Navigate to the API endpoint
-	const response = (await page.goto(
-		`/api/projects?page=${pagination.page}&limit=${pagination.limit}`
-	)) as Response;
-	const responseBody = await response.json();
-
-	expect(response.ok()).toBeTruthy();
-	expect(responseBody.data.length).toEqual(pagination.limit);
-	expect(responseBody.pagination).toEqual({
-		page: pagination.page,
-		limit: pagination.limit,
-		total: 15,
-		prev: true,
-		next: true
+	test('get project', async ({ page }) => {
+		// Navigate to the specific project endpoint
+		const response = (await page.goto(`/api/projects/${project._id}`)) as Response;
+		const responseBody = await response.json();
+		expect(response.ok()).toBeTruthy();
+		expect(responseBody).toEqual(project);
+	});
+	test('project not found', async ({ page }) => {
+		// Navigate to the specific project endpoint
+		const fakeId = new mongoose.Types.ObjectId();
+		const response = (await page.goto(`/api/projects/${fakeId}`)) as Response;
+		const responseBody = await response.json();
+		expect(response.ok()).toBeFalsy();
+		expect(responseBody).toEqual(PROJECT_MESSAGES.PROJECT_NOT_FOUND);
 	});
 });
