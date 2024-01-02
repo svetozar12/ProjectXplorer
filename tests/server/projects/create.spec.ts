@@ -31,13 +31,16 @@ test.describe('Testing POST - /api/projects', () => {
 	test('create project with bad payload', async ({ request }) => {
 		// Sending a POST request to create a new project
 		const response = await request.post('/api/projects', {
-			data: {}
+			data: { description: 1 }
 		});
 		// Check if the response status is 200 or 201 (success codes for POST)
 		expect(response.ok()).toBeFalsy();
 
 		// Parse the response body as JSON
 		const responseBody = await response.json();
-		expect(responseBody.error).toBe('Invalid input');
+		expect(responseBody.validationErrors).toStrictEqual([
+			'name: Required',
+			'description: Expected string, received number'
+		]);
 	});
 });

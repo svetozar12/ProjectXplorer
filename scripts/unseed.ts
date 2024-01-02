@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { dbConnect, dbDisconnect, getDB } from './util';
-console.log('hi');
+import { dbConnect, dbDisconnect, getDB } from '../src/lib/server/mongo';
+
 // Connect to the MongoDB instance
 dbConnect().then(async () => {
 	await clearDatabase();

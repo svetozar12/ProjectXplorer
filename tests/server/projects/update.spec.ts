@@ -23,14 +23,14 @@ test.describe('Testing PUT - /api/projects/{id}', () => {
 		expect(response.ok()).toBeTruthy();
 		expect(responseBody.name).toEqual(newName);
 	});
-	test('update project with empty payload', async ({ request }) => {
+	test('update project with bad payload', async ({ request }) => {
 		// Navigate to the specific project endpoint
 		const response = await request.put(`/api/projects/${project._id}`, {
-			data: {}
+			data: { name: 1 }
 		});
 		const responseBody = await response.json();
 		expect(response.ok()).toBeFalsy();
-		expect(responseBody.error).toEqual('Invalid input');
+		expect(responseBody.validationErrors).toStrictEqual(['name: Expected string, received number']);
 	});
 	test('project not found', async ({ request }) => {
 		// Navigate to the specific project endpoint

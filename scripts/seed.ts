@@ -1,7 +1,7 @@
 import { ProjectModel, type Project } from '../src/lib/server/mongo/models';
 import mongoose from 'mongoose';
+import { dbConnect, dbDisconnect } from '../src/lib/server/mongo';
 import 'dotenv/config';
-import { dbConnect, dbDisconnect } from './util';
 
 dbConnect().then(async () => {
 	// Run the seeding function
