@@ -1,8 +1,18 @@
-import { MONGO_URL } from '$env/static/private';
 import mongoose from 'mongoose';
+import 'dotenv/config';
 
 export async function dbConnect(): Promise<void> {
-	await mongoose.connect(MONGO_URL);
+	switch (process.env.NODE_ENV) {
+		case 'test':
+			console.log('Connecting to test mongodb instance...');
+			await mongoose.connect(process.env.TEST_MONGO_URL as string);
+			break;
+
+		default:
+			console.log('Connecting to development or local mongodb instance...');
+			await mongoose.connect(process.env.DEVELOPMENT_MONGO_URL as string);
+			break;
+	}
 }
 
 export async function dbDisconnect(): Promise<void> {

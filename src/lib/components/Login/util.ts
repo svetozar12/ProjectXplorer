@@ -7,15 +7,13 @@ import Cookies from 'universal-cookie';
 export const signInWithGithub = async () => {
 	const provider = new GithubAuthProvider();
 	try {
-		const {
-			user: { getIdToken }
-		} = await signInWithPopup(firebaseAuth, provider);
+		const { user } = await signInWithPopup(firebaseAuth, provider);
 
 		const cookies = new Cookies(null, { path: '/' });
-		const token = await getIdToken();
+		const token = await user.getIdToken();
 		cookies.set(FIREBASE_TOKEN, token);
 		goto('/');
-	} catch {
+	} catch (error) {
 		// handling some crazy error
 	}
 };
