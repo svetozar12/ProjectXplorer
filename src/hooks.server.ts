@@ -11,9 +11,14 @@ dbConnect()
 		console.log('MongoDB failed to start');
 		console.log(e);
 	});
+
 export const handle: Handle = async ({ event, resolve }) => {
-	if (!event.request.url.includes('/api')) return resolve(event);
-	const token = event.request.headers.get('authorization')?.split(' ')[1];
+	const {
+		request: { url, headers }
+	} = event;
+
+	if (!url.includes('/api')) return resolve(event);
+	const token = headers.get('authorization')?.split(' ')[1];
 
 	if (!token) {
 		throw new Error('Unauthorized');
@@ -29,10 +34,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 export const handleError: HandleServerError = async ({ error }) => {
 	if (error instanceof Error && error.message === 'Unauthorized') {
-		return {
-			status: 401,
-			body: 'Unauthorized access'
-		};
+		return error;
 	}
 
 	// Handle other errors or rethrow them
