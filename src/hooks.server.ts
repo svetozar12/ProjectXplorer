@@ -1,6 +1,7 @@
 import { dbConnect } from '$lib/server/mongo/mongo';
 import { verifyToken } from '$lib/server';
-import type { Handle, HandleServerError } from '@sveltejs/kit';
+import { type Handle } from '@sveltejs/kit';
+import { AUTH_MESSAGES } from '$lib/constants/auth';
 
 // Connect to MongoDB before starting the server
 dbConnect()
@@ -21,22 +22,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const token = headers.get('authorization')?.split(' ')[1];
 
 	if (!token) {
-		throw new Error('Unauthorized');
+		return new Response(AUTH_MESSAGES.UNAUTHORIZED, { status: 401 });
 	}
 
 	const user = await verifyToken(token);
 	if (!user) {
-		throw new Error('Unauthorized');
+		return new Response(AUTH_MESSAGES.UNAUTHORIZED, { status: 401 });
 	}
 
 	return resolve(event);
-};
-
-export const handleError: HandleServerError = async ({ error }) => {
-	if (error instanceof Error && error.message === 'Unauthorized') {
-		return error;
-	}
-
-	// Handle other errors or rethrow them
-	throw error;
 };
