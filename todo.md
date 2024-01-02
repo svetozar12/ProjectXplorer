@@ -82,13 +82,7 @@ Creating a comprehensive project management and collaboration tool like "Project
    - `POST /projects/:projectId/members`: Add a user to a project.
    - `DELETE /projects/:projectId/members/:userId`: Remove a user from a project.
 
-8. **Authentication:**
-
-   - `POST /auth/register`: Register a new user.
-   - `POST /auth/login`: Log in a user.
-   - `POST /auth/logout`: Log out a user.
-
-9. **File Management:**
+8. **File Management:**
    - `POST /projects/:projectId/files`: Upload a file to a project.
    - `GET /projects/:projectId/files/:fileId`: Download a specific file.
    - `DELETE /projects/:projectId/files/:fileId`: Delete a specific file.

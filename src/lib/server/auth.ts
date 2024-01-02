@@ -15,3 +15,13 @@ export async function authGuard({ url, cookies }: ServerLoadEvent) {
 		if (!pathname.includes('/login')) redirect(303, '/login');
 	}
 }
+
+export async function verifyToken(token: string) {
+	try {
+		const decodedToken = await firebaseServerInstance.auth().verifyIdToken(token);
+		return decodedToken;
+	} catch (error) {
+		console.error('Error verifying token:', error);
+		return null;
+	}
+}

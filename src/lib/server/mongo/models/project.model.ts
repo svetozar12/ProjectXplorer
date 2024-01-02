@@ -1,23 +1,22 @@
-import type { User } from 'firebase/auth';
 import mongoose, { Schema, Document, model, Types, Model } from 'mongoose';
 
 interface Task {
 	title: string;
 	description?: string;
 	dueDate?: Date;
-	assignedTo?: Types.ObjectId | User;
+	assignedTo?: Types.ObjectId;
 	status?: 'To Do' | 'In Progress' | 'Completed';
 }
 
 interface Member {
-	user: Types.ObjectId | User;
+	user: Types.ObjectId;
 	role?: 'Admin' | 'Member';
 }
 
 interface File {
 	name: string;
 	path: string;
-	uploadedBy: Types.ObjectId | User;
+	uploadedBy: Types.ObjectId;
 	uploadDate?: Date;
 }
 
@@ -53,11 +52,10 @@ const projectSchema: Schema<ProjectDocument> = new Schema({
 			},
 			description: String,
 			dueDate: Date,
-			// TODO: add with user resource
-			// assignedTo: {
-			// 	type: Schema.Types.ObjectId,
-			// 	ref: 'User'
-			// },
+			assignedTo: {
+				type: Schema.Types.ObjectId,
+				ref: 'User'
+			},
 			status: {
 				type: String,
 				enum: ['To Do', 'In Progress', 'Completed'],
@@ -65,7 +63,7 @@ const projectSchema: Schema<ProjectDocument> = new Schema({
 			}
 		}
 	],
-	// TODO: add with user resource
+	// TODO add with members resource
 	// members: [
 	// 	{
 	// 		user: {
@@ -83,11 +81,10 @@ const projectSchema: Schema<ProjectDocument> = new Schema({
 		{
 			name: String,
 			path: String,
-			// TODO: add with user resource
-			// uploadedBy: {
-			// 	type: Schema.Types.ObjectId,
-			// 	ref: 'User'
-			// },
+			uploadedBy: {
+				type: Schema.Types.ObjectId,
+				ref: 'User'
+			},
 			uploadDate: {
 				type: Date,
 				default: Date.now
