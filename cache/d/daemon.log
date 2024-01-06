@@ -1,0 +1,37 @@
+[NX Daemon Server] - 2024-01-06T13:01:36.796Z - Started listening on: /var/folders/zd/xbyb8r6s6z563rq_q8n79dwm0000gn/T/e44bc3e2610338a5dc72/d.sock
+[NX Daemon Server] - 2024-01-06T13:01:36.800Z - [WATCHER]: Subscribed to changes within: /Users/sgospodinov/Desktop/web-dev-adventures/ProjectXplorer/temp (native)
+[NX Daemon Server] - 2024-01-06T13:01:36.800Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-06T13:01:36.801Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-06T13:01:36.802Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-06T13:01:36.803Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-06T13:01:36.815Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-06T13:01:36.815Z - [REQUEST]: 
+[NX Daemon Server] - 2024-01-06T13:01:36.815Z - [REQUEST]: 
+[NX Daemon Server] - 2024-01-06T13:01:36.875Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-06T13:01:36.875Z - Time taken for 'total for creating and serializing project graph' 72.19162464141846ms
+[NX Daemon Server] - 2024-01-06T13:01:36.876Z - [WATCHER]: .nx/cache/d/server-process.json was created or restored
+[NX Daemon Server] - 2024-01-06T13:01:36.880Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-06T13:01:36.880Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 72. Response time: 5.
+[NX Daemon Server] - 2024-01-06T13:01:36.978Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-06T13:01:36.978Z - [REQUEST]: .nx/cache/d/server-process.json
+[NX Daemon Server] - 2024-01-06T13:01:36.978Z - [REQUEST]: 
+[NX Daemon Server] - 2024-01-06T13:01:36.988Z - Time taken for 'hash changed files from watcher' 0.13762474060058594ms
+[NX Daemon Server] - 2024-01-06T13:01:42.278Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-01-06T13:01:49.735Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-06T13:01:49.735Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-01-06T13:01:49.735Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-01-06T13:01:49.736Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-01-06T13:01:49.736Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-01-06T13:01:49.737Z - Time taken for 'total for creating and serializing project graph' 0.19904184341430664ms
+[NX Daemon Server] - 2024-01-06T13:01:49.738Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-01-06T13:01:49.738Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-01-06T13:02:45.337Z - [WATCHER]: 16 file(s) created or restored, 4 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2024-01-06T13:02:45.338Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-06T13:02:45.439Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-01-06T13:02:45.440Z - [REQUEST]: apps/frontend/.swcrc,apps/frontend/vite.config.ts,apps/frontend/src/app/app.element.ts,apps/frontend/src/styles.css,apps/frontend/.eslintrc.json,apps/frontend/.babelrc,apps/frontend/public/favicon.ico,apps/frontend/src/assets/.gitkeep,apps/frontend/src/main.ts,apps/frontend/index.html,apps/frontend/src/app/app.element.css,apps/frontend/project.json,apps/frontend/tsconfig.json,apps/frontend/tsconfig.spec.json,apps/frontend/tsconfig.app.json,apps/frontend/src/app/app.element.spec.ts,package.json,nx.json,.vscode/extensions.json,tsconfig.base.json
+[NX Daemon Server] - 2024-01-06T13:02:45.440Z - [REQUEST]: 
+[NX Daemon Server] - 2024-01-06T13:02:45.588Z - Time taken for 'hash changed files from watcher' 0.3958749771118164ms
+[NX Daemon Server] - 2024-01-06T13:03:03.403Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-01-06T13:03:03.403Z - [WATCHER]: Stopping the watcher for /Users/sgospodinov/Desktop/web-dev-adventures/ProjectXplorer/temp (sources)
+[NX Daemon Server] - 2024-01-06T13:03:03.404Z - [WATCHER]: Stopping the watcher for /Users/sgospodinov/Desktop/web-dev-adventures/ProjectXplorer/temp (outputs)
+[NX Daemon Server] - 2024-01-06T13:03:03.404Z - Server stopped because: "Lock file changed"

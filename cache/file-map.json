@@ -1,0 +1,264 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.8",
+  "deps": {
+    "axios": "^1.0.0",
+    "express": "~4.18.1",
+    "tslib": "^2.3.0",
+    "@nx/esbuild": "17.2.8",
+    "@nx/eslint": "17.2.8",
+    "@nx/eslint-plugin": "17.2.8",
+    "@nx/jest": "17.2.8",
+    "@nx/js": "17.2.8",
+    "@nx/node": "17.2.8",
+    "@nx/vite": "17.2.8",
+    "@nx/web": "17.2.8",
+    "@nx/workspace": "17.2.8",
+    "@swc-node/register": "~1.6.7",
+    "@swc/core": "~1.3.85",
+    "@types/express": "~4.17.13",
+    "@types/jest": "^29.4.0",
+    "@types/node": "18.16.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "@vitest/coverage-v8": "~0.34.6",
+    "@vitest/ui": "~0.34.6",
+    "esbuild": "^0.19.2",
+    "eslint": "~8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "jest": "^29.4.1",
+    "jest-environment-node": "^29.4.1",
+    "jsdom": "~22.1.0",
+    "nx": "17.2.8",
+    "prettier": "^2.6.2",
+    "swc-loader": "0.1.15",
+    "ts-jest": "^29.1.0",
+    "ts-node": "10.9.1",
+    "typescript": "~5.2.2",
+    "vite": "^5.0.0",
+    "vitest": "~0.34.6"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "17722112666649925219"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16877376182141465221"
+      },
+      {
+        "file": ".nx/cache/d/server-process.json",
+        "hash": "10233380085749392275"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "16448050467312557263"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16117882425360397805"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      },
+      {
+        "file": "README.md",
+        "hash": "18111513059860231293"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "6837822589450354725"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "nx.json",
+        "hash": "15585399273191616144"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "9177274764015486019"
+      },
+      {
+        "file": "package.json",
+        "hash": "1143240250819574137"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "16936441711144470533"
+      }
+    ],
+    "projectFileMap": {
+      "backend-e2e": [
+        {
+          "file": "apps/backend-e2e/.eslintrc.json",
+          "hash": "11877214128413771603"
+        },
+        {
+          "file": "apps/backend-e2e/jest.config.ts",
+          "hash": "15771416190657192937"
+        },
+        {
+          "file": "apps/backend-e2e/project.json",
+          "hash": "5628886204334343613"
+        },
+        {
+          "file": "apps/backend-e2e/src/backend/backend.spec.ts",
+          "hash": "3462696820832959069",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/backend-e2e/src/support/global-setup.ts",
+          "hash": "8466134968876053354"
+        },
+        {
+          "file": "apps/backend-e2e/src/support/global-teardown.ts",
+          "hash": "10937455628419751199"
+        },
+        {
+          "file": "apps/backend-e2e/src/support/test-setup.ts",
+          "hash": "3048014783977671315",
+          "deps": [
+            "npm:axios"
+          ]
+        },
+        {
+          "file": "apps/backend-e2e/tsconfig.json",
+          "hash": "6891393119390796046"
+        },
+        {
+          "file": "apps/backend-e2e/tsconfig.spec.json",
+          "hash": "1260127805776156549"
+        }
+      ],
+      "frontend": [
+        {
+          "file": "apps/frontend/.babelrc",
+          "hash": "11877436663910714680"
+        },
+        {
+          "file": "apps/frontend/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "apps/frontend/.swcrc",
+          "hash": "9921579498929141427"
+        },
+        {
+          "file": "apps/frontend/index.html",
+          "hash": "17865992105809203467"
+        },
+        {
+          "file": "apps/frontend/project.json",
+          "hash": "14453710133268017355"
+        },
+        {
+          "file": "apps/frontend/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/frontend/src/app/app.element.css",
+          "hash": "17325190473532207102"
+        },
+        {
+          "file": "apps/frontend/src/app/app.element.spec.ts",
+          "hash": "10170745857830157027"
+        },
+        {
+          "file": "apps/frontend/src/app/app.element.ts",
+          "hash": "14964752285820705783"
+        },
+        {
+          "file": "apps/frontend/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/frontend/src/main.ts",
+          "hash": "466268443977743393"
+        },
+        {
+          "file": "apps/frontend/src/styles.css",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "apps/frontend/tsconfig.app.json",
+          "hash": "7543714127411093002"
+        },
+        {
+          "file": "apps/frontend/tsconfig.json",
+          "hash": "3747533697791203485"
+        },
+        {
+          "file": "apps/frontend/tsconfig.spec.json",
+          "hash": "15943385144407153049"
+        },
+        {
+          "file": "apps/frontend/vite.config.ts",
+          "hash": "10584205862483074234",
+          "deps": [
+            "npm:vite",
+            "npm:@nx/vite/plugins/nx-tsconfig-paths.plugin"
+          ]
+        }
+      ],
+      "backend": [
+        {
+          "file": "apps/backend/.eslintrc.json",
+          "hash": "11877214128413771603"
+        },
+        {
+          "file": "apps/backend/Dockerfile",
+          "hash": "9822548559843804003"
+        },
+        {
+          "file": "apps/backend/jest.config.ts",
+          "hash": "10819046340117899657"
+        },
+        {
+          "file": "apps/backend/project.json",
+          "hash": "3072175584174071732"
+        },
+        {
+          "file": "apps/backend/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/backend/src/main.ts",
+          "hash": "11426877547722689263",
+          "deps": [
+            "npm:express"
+          ]
+        },
+        {
+          "file": "apps/backend/tsconfig.app.json",
+          "hash": "444230257966675768"
+        },
+        {
+          "file": "apps/backend/tsconfig.json",
+          "hash": "7213973086718502716"
+        },
+        {
+          "file": "apps/backend/tsconfig.spec.json",
+          "hash": "3343970246918836688"
+        }
+      ]
+    }
+  }
+}
