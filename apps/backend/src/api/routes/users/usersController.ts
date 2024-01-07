@@ -4,10 +4,10 @@ import {
   createUserSchema,
   deleteUserSchema,
   getUserByIdSchema,
-  getUserListSchema,
 } from './usersSchema';
 import { USER_MESSAGES } from '../../../constants/user';
 import { firebaseAuth } from '../../../config/firebase';
+import { paginationSchema } from '../../../utils/schema';
 
 export async function getUserById(req: Request, res: Response) {
   const { id } = getUserByIdSchema.parse({ id: req.params.id });
@@ -20,7 +20,7 @@ export async function getUserById(req: Request, res: Response) {
   res.status(200).json(user);
 }
 export async function getUserList(req: Request, res: Response) {
-  const { page, limit } = getUserListSchema.parse({
+  const { page, limit } = paginationSchema.parse({
     page: Number(req.query.page),
     limit: Number(req.query.limit),
   });
