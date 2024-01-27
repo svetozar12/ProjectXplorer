@@ -1,5 +1,5 @@
 import express from 'express';
-import { dbConnect } from './config';
+import { dbConnect } from '@svetozar12/api/mongo';
 import { initRoutes } from './api/routes';
 import { handleZodError } from './utils/handleZodError';
 
@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
-app.use((err, req, res, _) => {
+app.use((err, _req, res, _) => {
   const validationError = handleZodError(err);
   if (validationError) return validationError;
   console.error(err); // Log the error

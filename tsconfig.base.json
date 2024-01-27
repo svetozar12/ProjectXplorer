@@ -3,7 +3,6 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -13,7 +12,12 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@svetozar12/api/env": ["libs/api/env/src/index.ts"],
+      "@svetozar12/mongo": ["libs/api/mongo/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

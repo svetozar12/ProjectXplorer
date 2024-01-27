@@ -1,9 +1,14 @@
 {
-	"extends": "./tsconfig.json",
-	"compilerOptions": {
-		"outDir": "../../dist/out-tsc",
-		"module": "commonjs",
-		"types": ["jest", "node"]
-	},
-	"include": ["jest.config.ts", "src/**/*.ts"]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["jest", "node"],
+    "paths": {
+      "@svetozar12/api/env": ["libs/api/env/src/index.ts"],
+      "@svetozar12/api/mongo": ["libs/api/mongo/src/index.ts"],
+      "@svetozar12/api/*": ["apps/backend/*"]
+    }
+  },
+  "include": ["jest.config.ts", "src/**/*.ts"]
 }

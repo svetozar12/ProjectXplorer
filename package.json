@@ -1,5 +1,5 @@
 {
-  "name": "@temp/source",
+  "name": "@svetozar12/dragon-threads",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
@@ -21,6 +21,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@nrwl/cli": "^15.9.3",
     "@nx/esbuild": "17.2.8",
     "@nx/eslint": "17.2.8",
     "@nx/eslint-plugin": "17.2.8",

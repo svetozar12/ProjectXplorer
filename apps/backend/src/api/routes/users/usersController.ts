@@ -65,7 +65,6 @@ export async function deleteUser(req: Request, res: Response) {
     return res.status(404).json(USER_MESSAGES.USER_NOT_FOUND);
   }
 
-  // Assuming firebaseServerInstance is a correctly initialized Firebase instance
   await firebaseAuth.deleteUser(user.firebaseUid);
 
   res.status(200).json(USER_MESSAGES.USER_DELETED);

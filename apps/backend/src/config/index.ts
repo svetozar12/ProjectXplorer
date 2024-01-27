@@ -1,2 +1,1 @@
-export * from './env'
-export * from './mongo'
+export * from './firebase';
